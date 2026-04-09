@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ristorante Noir</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #050509;
+      --bg-soft: #101018;
+      --accent: #ffffff;
+      --accent-soft: #cfcfcf;
+      --border-soft: #2a2a35;
+      --highlight: #f5f5f5;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Helvetica Neue", Arial, sans-serif;
+      background: radial-gradient(circle at top, #151520 0, #050509 55%);
+      color: var(--accent-soft);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom, rgba(5, 5, 9, 0.95), transparent);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 18px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--highlight);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 4px;
+      color: var(--accent-soft);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: var(--highlight);
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .btn-ghost {
+      border: 1px solid var(--border-soft);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--highlight);
+      background: rgba(255, 255, 255, 0.02);
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 120px 20px 60px;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--accent-soft);
+      opacity: 0.8;
+    }
+
+    .hero-title {
+      font-size: clamp(40px, 5vw, 56px);
+      line-height: 1.05;
+      color: var(--highlight);
+    }
+
+    .hero-title span {
+      display: block;
+      color: var(--accent-soft);
+      font-weight: 300;
+      font-size: 0.9em;
+      margin-top: 6px;
+    }
+
+    .hero-text {
+      font-size: 16px;
+      max-width: 480px;
+      color: var(--accent-soft);
+      opacity: 0.9;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .btn-primary {
+      border-radius: 999px;
+      padding: 10px 22px;
+      border: 1px solid var(--highlight);
+      background: var(--highlight);
+      color: #000;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.1s ease;
+    }
+
+    .btn-primary:hover {
+      background: #e5e5e5;
+      transform: translateY(-1px);
+    }
+
+    .hero-note {
+      font-size: 13px;
+      color: var(--accent-soft);
+      opacity: 0.8;
+    }
+
+    .hero-right {
+      position: relative;
+      padding: 18px;
+    }
+
+    .hero-card {
+      border-radius: 26px;
+      overflow: hidden;
+      border: 1px solid var(--border-soft);
+      background: radial-gradient(circle at top, #20202c 0, #050509 60%);
+      box-shadow: 0 26px 60px rgba(0, 0, 0, 0.7);
+      position: relative;
+    }
+
+    .hero-image {
+      height: 260px;
+      background-image: url("https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80");
+      background-size: cover;
+      background-position: center;
+      filter: grayscale(100%);
+    }
+
+    .hero-card-content {
+      padding: 18px 20px 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .hero-card-title {
+      font-size: 16px;
+      color: var(--highlight);
+      margin-bottom: 6px;
+    }
+
+    .hero-card-sub {
+      font-size: 13px;
+      color: var(--accent-soft);
+      opacity: 0.85;
+      margin-bottom: 10px;
+    }
+
+    .hero-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--accent-soft);
+      opacity: 0.8;
+    }
+
+    .pill {
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 4px 10px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    .section-title {
+      font-size: 26px;
+      color: var(--highlight);
+      margin-bottom: 18px;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 30px;
+    }
+
+    .section-text {
+      font-size: 15px;
+      color: var(--accent-soft);
+      opacity: 0.9;
+    }
+
+    .card {
+      border-radius: 18px;
+      border: 1px solid var(--border-soft);
+      background: var(--bg-soft);
+      padding: 18px 18px 20px;
+    }
+
+    .card h3 {
+      font-size: 15px;
+      color: var(--highlight);
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: var(--accent-soft);
+      opacity: 0.9;
+    }
+
+    footer {
+      border-top: 1px solid var(--border-soft);
+      padding: 18px 20px 26px;
+      font-size: 12px;
+      color: var(--accent-soft);
+      opacity: 0.8;
+      text-align: center;
+    }
+html {
+  scroll-behavior: smooth;
+}
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        padding-top: 100px;
+      }
+      .hero-right {
+        order: -1;
+      }
+      .section-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <nav class="nav">
+        <div class="logo">NOIR BISTROT</div>
+        <div class="nav-links">
+          <a href="#chi-siamo">Chi Siamo</a>
+          <a href="menu.html">Menu</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-left">
+          <div class="eyebrow">Cucina contemporanea</div>
+          <h1 class="hero-title">
+            Un ristorante in bianco e nero.
+            <span>Atmosfera intima, luci soffuse e piatti pensati per restare impressi.</span>
+          </h1>
+          <p class="hero-text">
+            Noir Bistrot è il luogo dove la cucina incontra il design. Un menu essenziale,
+            ingredienti selezionati e una sala che vive di contrasti: luce e ombra, bianco e nero,
+            tradizione e modernità.
+          </p>
+          <div class="hero-cta">
+            <button class="btn-ghost" onclick="location.href='menu.html'">Guarda il menu</button>
+</button>
+          </div>
+          <p class="hero-note">
+            Aperto dal martedì alla domenica · Cena dalle 19:30 · Centro città
+          </p>
+        </div>
+
+        <div class="hero-right">
+          <div class="hero-card">
+            <div class="hero-image"></div>
+            <div class="hero-card-content">
+              <div class="hero-card-title">Degustazione Noir</div>
+              <div class="hero-card-sub">
+                Un percorso in 6 portate tra sapori intensi, contrasti netti e impiattamenti essenziali.
+              </div>
+              <div class="hero-meta">
+                <span class="pill">Menu degustazione</span>
+                <span>Solo su prenotazione</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="chi-siamo" class="section">
+        <h2 class="section-title">Chi Siamo</h2>
+        <div class="section-grid">
+          <div class="section-text">
+            Noir Bistrot nasce dall’idea di creare uno spazio raccolto, curato nei dettagli,
+            dove ogni elemento ha un ruolo preciso: il piatto, la luce, il suono, il ritmo del servizio.
+            <br /><br />
+            La nostra cucina parte dalla tradizione italiana e la porta in una dimensione più essenziale:
+            pochi ingredienti, tecniche pulite, sapori netti. Nessun eccesso, nessuna distrazione.
+          </div>
+          <div class="card">
+            <h3>La nostra filosofia</h3>
+            <p>
+              Crediamo in una cucina che non urla ma resta impressa. Materie prime selezionate,
+              stagionalità e una carta dei vini pensata per accompagnare, non per sovrastare.
+              Ogni sera è un piccolo racconto in bianco e nero.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © Noir Bistrot · Tutti i diritti riservati · Design in bianco e nero, come piace a noi.
+    </footer>
+  </div>
+</body>

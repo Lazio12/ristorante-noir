@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurant Menu</title>
+
+    <style>
+      body {
+        background: #050509;
+        color: #e5e5e5;
+        font-family: system-ui, sans-serif;
+        margin: 0;
+        padding: 40px 0;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .menu-group-heading {
+        font-size: 32px;
+        color: #ffffff;
+        margin-bottom: 20px;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        padding-bottom: 10px;
+      }
+
+      .menu-group {
+        display: flex;
+        flex-direction: column;
+        gap: 26px;
+        margin-bottom: 60px;
+      }
+
+      .menu-item {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 18px;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+      }
+
+      .menu-item-heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 0 6px 0;
+      }
+
+      .menu-item-name {
+        font-size: 18px;
+        color: #ffffff;
+        font-weight: 600;
+      }
+
+      .menu-item-price {
+        font-size: 16px;
+        color: #ffffff;
+        opacity: 0.9;
+      }
+
+      .menu-item-desc {
+        font-size: 14px;
+        color: #cfcfcf;
+        opacity: 0.8;
+        line-height: 1.5;
+        margin: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="container">
+
+      <!-- ENTRÉE -->
+      <div class="menu">
+        <h2 class="menu-group-heading">Antipasti</h2>
+        <div class="menu-group">
+
+          <div class="menu-item">
+            <h3 class="menu-item-heading">
+              <span class="menu-item-name">Bruschetta</span>
+              <span class="menu-item-price">€12</span>
+            </h3>
+            <p class="menu-item-desc">
+              Pane croccante, pomodoro fresco, basilico e olio extravergine.
+            </p>
+          </div>
+
+          <div class="menu-item">
+            <h3 class="menu-item-heading">
+              <span class="menu-item-name">Carpaccio di Manzo</span>
+              <span class="menu-item-price">€14</span>
+            </h3>
+            <p class="menu-item-desc">
+              Scaglie di parmigiano, olio al tartufo e pepe nero.
+            </p>
+          </div>
+
+          <div class="menu-item">
+            <h3 class="menu-item-heading">
+              <span class="menu-item-name">Polpo Arrosto</span>
+              <span class="menu-item-price">€16</span>
+            </h3>
+            <p class="menu-item-desc">
+              Crema di patate affumicate e paprika dolce.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- MAIN COURSE -->
+      <div class="menu">
+        <h2 class="menu-group-heading">Primi Piatti</h2>
+        <div class="menu-group">
+
+          <div class="menu-item">
+            <h3 class="menu-item-heading">
+              <span class="menu-item-name">Tagliolini al Limone</span>
+              <span class="menu-item-price">€15</span>
+            </h3>
+            <p class="menu-item-desc">
+              Burro chiarificato, scorza fresca e pepe nero.
+            </p>
+          </div>
+
+          <div class="menu-item">
+            <h3 class="menu-item-heading">
+              <span class="menu-item-name">Risotto al Nero di Seppia</span>
+              <span class="menu-item-price">€17</span>
+            </h3>
+            <p class="menu-item-desc">
+              Mantecato al parmigiano e lime.
+            </p>
+          </div>
+
+          <div class="menu-item">
+            <h3 class="menu-item-heading">
+              <span class="menu-item-name">Ravioli di Zucca</span>
+              <span class="menu-item-price">€16</span>
+            </h3>
+            <p class="menu-item-desc">
+              Burro nocciola, amaretti e salvia.
+            </p>
+          </div>
+
+        </div>
+      </div>
+      <!-- SECOND COURSE -->
+      <div class="menu">
+        <h2 class="menu-group-heading">Secondi Piatti</h2>
+        <div class="menu-group">
+
+          <div class="menu-item">
+            <h3 class="menu-item-heading">
+              <span class="menu-item-name">Filetto di Manzo</span>
+              <span class="menu-item-price">€24</span>
+            </h3>
+            <p class="menu-item-desc">
+              Riduzione al vino rosso, patate fondenti e rosmarino.
+            </p>
+          </div>
+
+          <div class="menu-item">
+            <h3 class="menu-item-heading">
+              <span class="menu-item-name">Branzino alla Griglia</span>
+              <span class="menu-item-price">€22</span>
+            </h3>
+            <p class="menu-item-desc">
+              Verdure croccanti, limone bruciato e olio alle erbe.
+            </p>
+          </div>
+
+          <div class="menu-item">
+            <h3 class="menu-item-heading">
+              <span class="menu-item-name">Pollo Noir</span>
+              <span class="menu-item-price">€18</span>
+            </h3>
+            <p class="menu-item-desc">
+              Marinatura al carbone vegetale, erbe aromatiche e crema di patate.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- DESSERT -->
+      <div class="menu">
+        <h2 class="menu-group-heading">Dolci</h2>
+        <div class="menu-group">
+
+          <div class="menu-item">
+            <h3 class="menu-item-heading">
+              <span class="menu-item-name">Mousse al Cioccolato</span>
+              <span class="menu-item-price">€8</span>
+            </h3>
+            <p class="menu-item-desc">
+              Cioccolato fondente 70%, sale maldon e crumble al cacao.
+            </p>
+          </div>
+
+          <div class="menu-item">
+            <h3 class="menu-item-heading">
+              <span class="menu-item-name">Cheesecake al Carbone</span>
+              <span class="menu-item-price">€9</span>
+            </h3>
+            <p class="menu-item-desc">
+              Base croccante, crema leggera e carbone vegetale alimentare.
+            </p>
+          </div>
+
+          <div class="menu-item">
+            <h3 class="menu-item-heading">
+              <span class="menu-item-name">Tiramisù Classico</span>
+              <span class="menu-item-price">€7</span>
+            </h3>
+            <p class="menu-item-desc">
+              Mascarpone fresco, savoiardi al caffè e cacao amaro.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+  </body>
+</html>
